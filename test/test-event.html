@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
+
+	<script src="../dist/jquery.min.js"></script>
+	<script src="../dist/jquery.fullpage.min.js"></script>
+
+	<title>H5page-test</title>
+
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		body
+		{
+			background: #eee;
+		}
+		.component
+		{
+			width: 50%;
+			height: 90px;
+			background-color: orange;
+			display: none;
+		}
+	</style>
+
+</head>
+<body>
+	
+	<!-- fullpage 事件验证 -->
+
+	<div id="h5">
+		<div class="page section" id="page-1">
+			<div class="component logo">logo</div>
+			<div class="component logo2">hh4</div>
+		</div>
+		<div class="page section" id="page-2">
+			<div class="component ld">ssdsdsd</div>
+		</div>
+		<div class="page section" id="page-3">
+			<div class="component ld44">oooofsd</div>
+		</div>
+		<div class="page section" id="page-4">
+			<div class="component ds">555555</div>
+		</div>
+	</div>
+
+	<script>
+
+		// 验证组件的切换
+
+		$('.page').on('onLoad',function(){
+			console.log( $(this).attr('id'),'>>>','onLoad');
+			$(this).find('.component').trigger('onLoad');
+		});
+
+		$('.page').on('onLeave',function(){
+			console.log( $(this).attr('id'),'>>>','onLeave');
+			$(this).find('.component').trigger('onLeave');
+		});
+	
+
+		$('.component').on('onLoad', function(event){
+			
+			//防止同名事件的一个死循环，阻止事件向上传播
+			//即当component执行onLeave时会传给page,导致page再次触发onLeave
+			//事件形成死循环
+			//另外一个方法是renturn false;
+			event.stopPropagation();
+			$(this).fadeIn();
+			
+		});
+		$('.component').on('onLeave', function(event){
+			event.stopPropagation();
+			$(this).fadeOut();
+		});
+
+
+		$('#h5').fullpage({
+			'sectionsColor': ['#8bc34a','#e91e63','#ff5722','#009688'],
+			/*接收 index、nextIndex 和 direction 3个参数：
+			**index 是离开的“页面”的序号，从1开始计算；
+			**nextIndex 是滚动到的“页面”的序号，从1开始计算；
+			**direction 判断往上滚动还是往下滚动，值是 up 或 down
+			*/
+			'onLeave': function(index, nextIndex, direction) {
+				$('#h5').find('.page').eq(index-1).trigger('onLeave');
+			},
+			//anchorLink 是锚链接的名称，index 是序号，从1开始计算
+			'afterLoad': function(anchorLink, index) 
+			{
+				$('#h5').find('.page').eq(index-1).trigger('onLoad');
+			}
+		});
+
+		
+
+
+	</script>
+
+</body>
+</html>

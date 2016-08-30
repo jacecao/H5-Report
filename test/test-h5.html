@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+	<title>componentBase</title>
+
+	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
+	<link rel="stylesheet" href="../css/h5-componentBase.css">
+
+	<script src="../dist/jquery.min.js"></script>
+	<script src="../dist/jquery.fullpage.min.js"></script>
+	<script src="../js/h5ComponentBase.js"></script>
+	<script src="../js/h5.js"></script>
+
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		body
+		{
+			background: #eee;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<!-- 验证H5主页面整合功能 -->
+
+	<script>
+		var h5 = new H5();
+		h5.addPage('page1')
+			.addComponent('logo',{
+				width: 200,
+				height: 100,
+				css: {
+					background: 'orange',
+					top: 0,
+					opacity: 0
+				},
+				animateIn: { top: 50, opacity:1},
+				animateOut: {
+					top: 0, opacity: 0
+				},
+				text: 'test page1'
+			})
+			.addComponent('hh3',{
+				width: 200,
+				height: 100,
+				css: {
+					background: 'pink',
+					top: 150
+				},
+				text: 'test2 page1'
+			})
+			.addPage('page2')
+				.addComponent('hh4',{
+					width: 300,
+					height: 100,
+					css: {
+						background: 'pink',
+						bottom: 0,
+						opacity: 0
+					},
+					animateIn: {
+						bottom: 150, 
+						opacity:1
+					},
+					animateOut: {
+						bottom: 0,
+						opacity: 0
+					},
+					text: 'test1 page2'
+			})
+			.addPage('page3')
+				.addComponent('hh5',{
+					width: 400,
+					height: 100,
+					css: {
+						background: 'blue',
+						top: 150
+					},
+					text: 'test3 page3'
+			}).loader();
+	</script>
+
+</body>
+</html>
