@@ -8,10 +8,13 @@
 
 	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
 	<link rel="stylesheet" href="../css/h5ComponentBase.css">
+	<link rel="stylesheet" href="../css/h5ComponentPoint.css">
 
 	<script src="../dist/jquery.min.js"></script>
 	<script src="../dist/jquery.fullpage.min.js"></script>
 	<script src="../js/h5ComponentBase.js"></script>
+	<script src="../js/h5ComponentPoint.js"></script>
+	<script src="../js/h5.js"></script>
 
 	<style>
 		html,body{
@@ -35,44 +38,35 @@
 </head>
 
 <body>
-	<!-- 验证H5基本图文组件 -->
+
+	<!-- 验证H5散点图组件 -->
 	<div class="iphone">
 		
 	</div>
 
 	<script>
-		/*
-		var h5 = new H5ComponentBase({
-			width: 514,
-			height: 306,
-			backgroundImage: '../images/p1_people.png',
-			css: {
-				bottom: 0,
-				opacity: 0
-			},
-			animateIn: {bottom: 80,opacity: 1},
-			animateOut: {bottom: 0,opacity: 0},
-			align: 'center'
-		});
-		$('.iphone').append(h5);
-		*/
 
-		var h5_component = new H5ComponentBase({
+		var h5_component = new H5ComponentPoint('point',{
 			width: 200,
-			height: 100,
+			height: 200,
+			data: [
+					{text: 'first',value: 0.4,color: 'red',position: {left: -50,top: -50}},
+					{text: 'second',value: 0.3,color: 'pink',position: {top: 150,left: 50}},
+					{text: 'three',value: 0.1,color: 'orange',position: {top: 50,left: 50}}
+				],
 			css: {
-				backgroundColor: 'pink',
-			}
+					left: 100,
+					top: 100,
+					fontSize: '20px',
+					opacity: 0
+				},
+			animateIn: { top: 150, opacity:1},
+			animateOut: {
+					top: 100, opacity: 0
+				},
 		});
-		var h5_component_1 = new H5ComponentBase({
-			width: 200,
-			height: 100,
-			css: {
-				backgroundColor: 'orange',
-				top: 200
-			}
-		});
-		$('.iphone').append(h5_component).append(h5_component_1);
+		
+		$('.iphone').append(h5_component);
 
 		var leave = false;
 		$('body').click(function(){
@@ -81,7 +75,7 @@
 			$('.h5_component').trigger( leave ? 'onLoad':'onLeave');
 			
 		});
-
+		
 	</script>
 
 </body>
