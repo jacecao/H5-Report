@@ -98,7 +98,11 @@ var H5ComponentBase = function( setClass, cfg ) {
     event.stopPropagation();
     //这里加class是为了更自由的添加组件加载样式
     $(this).addClass(cls + 'load').removeClass(cls+'leave');
-    config.animateIn && component.animate(config.animateIn);
+    config.animateIn && component.animate(config.animateIn,function(){
+     
+     config.endLoad && config.endLoad();
+
+    });
   
   });
 
@@ -107,10 +111,15 @@ var H5ComponentBase = function( setClass, cfg ) {
     event.stopPropagation();
 
     $(this).addClass(cls + 'leave').removeClass(cls+'load');
-    config.animateOut && component.animate(config.animateOut);
+    config.animateOut && component.animate(config.animateOut,function(){
+
+      config.endLeave && config.endLeave();
+
+    });
   
   });
 
   return component;
   
 };
+

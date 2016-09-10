@@ -1,8 +1,9 @@
 //散点图组件
 var H5ComponentPoint = function( setClass, cfg ) {
-  
+
   //创建一个基本组件
   var component = new H5ComponentBase( setClass, cfg );
+
 
   //创建散点元素
   //必须要有data配置项，且该项目里一定要有value属性
@@ -82,7 +83,7 @@ var H5ComponentPoint = function( setClass, cfg ) {
         });
 
         //添加事件动画
-        point.on('onLoad', function(event){
+        point.on('pointLoad', function(event){
           event.stopPropagation();
           $(this).animate({
             top: $(this).data('position').top,
@@ -90,7 +91,7 @@ var H5ComponentPoint = function( setClass, cfg ) {
           });
         });
 
-        point.on('onLeave', function(event){
+        point.on('pointLeave', function(event){
           event.stopPropagation();
           $(this).animate({
             top: $(this).data('position')._top,
@@ -104,11 +105,17 @@ var H5ComponentPoint = function( setClass, cfg ) {
 
     });
 
+    //触发散点元素加载动画
+    component.on('onLoad',function(){
+      component.find('.h5_component_point').trigger('pointLoad');
+    })
+    .on('onLeave',function(){
+      component.find('.h5_component_point').trigger('pointLeave');
+    });
+
   }else{
     console.error('请加入数据，data:[{},....]');
   }
-
-  
 
   return component;
 };
