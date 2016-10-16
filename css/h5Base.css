@@ -1,0 +1,119 @@
+.h5_component
+{
+	position: absolute;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+/* ****************************************************柱状图css */
+.h5_component_bar_row
+{
+	display: flex;
+	/* 项目的排列方向，也是确定主轴方向 默认是水平 */
+	flex-direction: row;
+	/* 项目在一条轴线排列是否需要换行 */
+	flex-wrap: nowrap;
+	/* 项目在主轴上的对齐方式  */
+	justify-content: center;
+	height: 15px;
+	font-size: 15px;
+	line-height: 15px;
+	margin-bottom: 15px;
+}
+.h5_component_bar_column
+{
+	display: flex;
+	float: left;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	font-size: 15px;
+}
+
+.h5_component_bar_row .name
+{
+	height: 100%;
+	width: 60px;
+	text-align: right;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 0 5px;
+}
+.h5_component_bar_column .name
+{
+	width: 80%;
+	word-wrap: break-word;
+	text-align: center;
+	margin: 0 auto;
+	padding: 5px 0;
+
+}
+
+.h5_component_bar_row .rate
+{
+	height: 15px;
+	/* 项目的放大比例，即占剩余空间的比例 */
+	flex-grow: 3;
+	margin-left: 5px;
+	overflow: hidden;
+	background-color: gray;
+	border-radius: 5px;
+}
+.h5_component_bar_column .rate
+{
+	flex-grow: 3;
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+	width: 25px;
+	margin: 0 auto;
+}
+
+.h5_component_bar_row .process
+{
+	background-color: orange;
+	transition: all 1s 0.5s;
+	height: 100%;
+	width: 0;
+}
+.h5_component_bar_column .process
+{
+	background-color: orange;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transition: all 1s 0.5s;
+	width: 100%;
+	height: 0;
+}
+
+.h5_component_bar_row .per
+{
+	flex-grow: 1;
+	height: 100%;
+	text-align: center;
+	opacity: 0;
+}
+.h5_component_bar_column .per
+{
+	flex-grow: 1;
+	height: 25px;
+	line-height: 25px;
+	width: 100%;
+	text-align: center;
+	opacity: 0;
+}
+
+/* ****************************************************折线图css */
+
+
+.h5_component_base_load .per
+{
+	transition: all 1s 1.2s;
+	opacity: 1;
+}
+
+
+.h5_component_base_leave .per
+{
+	opacity: 0;
+}

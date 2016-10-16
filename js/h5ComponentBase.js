@@ -98,7 +98,7 @@ var H5ComponentBase = function( setClass, cfg ) {
     event.stopPropagation();
     //这里加class是为了更自由的添加组件加载样式
     $(this).addClass(cls + 'load').removeClass(cls+'leave');
-    config.animateIn && component.animate(config.animateIn,function(){
+    config.animateIn && component.animate(config.animateIn, function() {
      
      config.endLoad && config.endLoad();
 

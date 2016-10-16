@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 
-	<title>进度条测试</title>
+	<title>竖进度条测试</title>
 
 	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
 	<link rel="stylesheet" href="../css/h5Base.css">
@@ -46,7 +46,7 @@
 			width: 530,
 			height: 300,
 			data: [
-					{text: 'first',value: 0.4},
+					{text: 'firstfirstfirstfirst',value: 0.4},
 					{text: 'second',value: 0.3},
 					{text: 'three',value: 0.1},
 					{text: 'four',value: 0.6},
@@ -56,10 +56,18 @@
 			// css: 柱状图 样式设置
 			process: {
 				color: ['#d1cdcd','#e887bb'],
-			},	
+				css: {
+					width: 30
+				}
+			},
+			// 整个组件的css设置
 			css: {
 				top: 100,
 				opacity: 0
+			},
+			// 对说明文字添加样式
+			textCss: {
+				color: '#009688'
 			},
 			align: 'center',
 			animateIn: {
@@ -71,7 +79,7 @@
 				opacity: 0
 			},
 			// 柱状图方向设定row column
-			// direction: 'column'
+			direction: 'column'
 		});
 		
 		$('.iphone').append(h5_component);

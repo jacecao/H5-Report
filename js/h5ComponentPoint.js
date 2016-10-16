@@ -2,7 +2,7 @@
 var H5ComponentPoint = function( setClass, cfg ) {
 
   //创建一个基本组件
-  var component = new H5ComponentBase( setClass, cfg );
+  var component = new H5ComponentBase( 'h5_component_points  ' + setClass, cfg );
 
 
   //创建散点元素
