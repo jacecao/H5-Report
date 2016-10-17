@@ -102,18 +102,31 @@
 	text-align: center;
 	opacity: 0;
 }
-
-/* ****************************************************折线图css */
+/* **************折线图文本css********** */
+.polyline_text
+{
+	opacity: 0;
+	transition: all 1s 1s;
+}
+/* ****************************************************载入和载出css */
 
 
 .h5_component_base_load .per
 {
-	transition: all 1s 1.2s;
+	transition: all 1s;
 	opacity: 1;
 }
 
-
 .h5_component_base_leave .per
+{
+	opacity: 0;
+}
+
+.h5_component_base_load .polyline_text
+{
+	opacity: 1;
+}
+.h5_component_base_leave .polyline_text
 {
 	opacity: 0;
 }

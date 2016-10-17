@@ -46,40 +46,40 @@
 			width: 600,
 			height: 400,
 			data: [
-					{text: 'firstfirstfirstfirst',value: 0.4},
-					{text: 'second',value: 0.3},
+					{text: 'firsasdasdasdtfirst',value: 0.4},
+					{text: '中国人出境旅游1990',value: 0.3},
 					{text: 'three',value: 0.1},
 					{text: 'four',value: 0.6},
 					{text: 'five',value: 0.7},
 				],
-			// color:柱状图颜色（住状框颜色，柱状条颜色）
-			// css: 柱状图 样式设置
-			process: {
-				color: ['#d1cdcd','#e887bb'],
-				css: {
-					width: 30
-				}
+			// 线条和阴影样式设置
+			// canvasStyle: {},
+			canvasStyle: {
+				// 网格颜色
+				borderColor: '#6f6f6f',
+				// 折线颜色
+				lineColor: 'pink',
+				// 阴影颜色
+				shadowColor: 'rgba(236, 150, 150, 0.3)',
+				// 底部文字颜色
+				textColor: 'red'
 			},
 			// 整个组件的css设置
 			css: {
 				top: 100,
 				opacity: 0
 			},
-			// 对说明文字添加样式
-			textCss: {
-				color: '#009688'
-			},
 			align: 'center',
+			// 载入动画设置
 			animateIn: {
 				top: 200,
 				opacity: 1
 			},
+			// 载出动画设置
 			animateOut: {
 				top: 100,
 				opacity: 0
 			},
-			// 柱状图方向设定row column
-			direction: 'column'
 		});
 		
 		$('.iphone').append(h5_component);
