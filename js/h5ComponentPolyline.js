@@ -169,7 +169,7 @@ var H5ComponentPolyline = function( setClass, cfg ) {
         setTimeout( function() {
           s -= 0.01;
           drawData(s);
-        }, i*10);
+        }, i*5);
       }
     });
 

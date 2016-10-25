@@ -40,7 +40,8 @@ var H5ComponentBase = function( setClass, cfg ) {
   
 //加入图片背景
   config.backgroundImage && component.css({
-    'background-image': 'url('+ config.backgroundImage +')'
+    'background-image': 'url('+ config.backgroundImage +')',
+    'overflow': 'hidden',
   });
 
 //组件对齐方式

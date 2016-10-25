@@ -11,7 +11,7 @@
 	<script src="../dist/jquery.min.js"></script>
 	<script src="../dist/jquery.fullpage.min.js"></script>
 	<script src="../js/h5ComponentBase.js"></script>
-	<script src="../js/h5ComponentPolyline.js"></script>
+	<script src="../js/h5ComponentRadbar.js"></script>
 	<script src="../js/h5.js"></script>
 
 	<style>
@@ -35,34 +35,36 @@
 
 <body>
 
-	<!-- 验证H5折线图组件 -->
+	<!-- 测试H5雷达图组件 -->
 	<div class="iphone">
 		
 	</div>
 
 	<script>
 
-		var h5_component = new H5ComponentPolyline('polyline',{
-			width: 600,
-			height: 400,
+		var h5_component = new H5ComponentRadbar('radbar',{
+			// 雷达图半径，就会根据这个值生成一个2倍该值的正方形
+			radius: 200,
 			data: [
-					{text: 'firsasdasdasdtfirst',value: 0.4},
-					{text: '中国人出境旅游1990',value: 0.3},
-					{text: 'three',value: 0.1},
+					{text: 'firsasd',value: 0.4},
+					{text: '中国人',value: 0.3},
+					{text: 'three',value: 0.9},
 					{text: 'four',value: 0.6},
 					{text: 'five',value: 0.7},
 				],
 			// 线条和阴影样式设置
 			// canvasStyle: {},
 			canvasStyle: {
-				// 网格颜色
-				borderColor: '#6f6f6f',
 				// 折线颜色
-				lineColor: '#000',
+				lineColor: '#ff9800',
+				// 扇骨颜色
+				borderColor: '#fff',
+				// 背景颜色
+				backgroundColor: ['#7dced6','#30afbb'],
 				// 阴影颜色
-				shadowColor: 'rgba(236, 150, 150, 0.3)',
+				shadowColor: 'rgba(0,150,136,.7)',
 				// 底部文字颜色
-				textColor: 'red'
+				textColor: '#000'
 			},
 			// 整个组件的css设置
 			css: {
