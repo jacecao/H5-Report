@@ -103,7 +103,7 @@
 	opacity: 0;
 }
 /* **************折线图文本/雷达图文本css********** */
-.polyline_text ,.radbar_text
+.polyline_text ,.radbar_text, .pie_text 
 {
 	opacity: 0;
 	transition: all 1s 1s;
@@ -122,11 +122,15 @@
 	opacity: 0;
 }
 
-.h5_component_base_load .polyline_text ,.h5_component_base_load .radbar_text
+.h5_component_base_load .polyline_text ,
+.h5_component_base_load .radbar_text,
+.h5_component_base_load .pie_text
 {
 	opacity: 1;
 }
-.h5_component_base_leave .polyline_text ,.h5_component_base_leave .radbar_text
+.h5_component_base_leave .polyline_text ,
+.h5_component_base_leave .radbar_text,
+.h5_component_base_leave .pie_text
 {
 	opacity: 0;
 }

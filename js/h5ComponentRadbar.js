@@ -1,4 +1,4 @@
-//折线图组件
+//雷达图组件
 var H5ComponentRadbar = function( setClass, cfg ) {
 
   //创建一个基本组件
@@ -106,7 +106,7 @@ var H5ComponentRadbar = function( setClass, cfg ) {
     ctx.stroke();
 
     // 创建文本DOM到组件
-    console.log(point);
+    // console.log(point);
     for( var k = 0; k < point.length; k++ ) {
       var textDom = $('<span class="radbar_text"></span>');
       textDom.text( cfg.data[k].text );
@@ -114,7 +114,7 @@ var H5ComponentRadbar = function( setClass, cfg ) {
         position: 'absolute',
         display: 'block',
         padding: '5px',
-        fontSize: '14px',
+        fontSize: '16px',
         wordWrap: 'break-word',
         textAlign: 'center',
         width: '50px',
@@ -210,10 +210,10 @@ var H5ComponentRadbar = function( setClass, cfg ) {
     component.on('onLoad',function(){
       // 雷达图生长动画
       var s = 0;
-      for( var i = 0; i <= 100; i++ ) {
+      for( var i = 1; i <= 100; i++ ) {
         setTimeout( function() {
           s += 0.01;
-          drawData(s);
+          drawData( parseFloat( (s).toFixed(2) ) );
         }, i*10 + 400);
       }
       
@@ -221,10 +221,10 @@ var H5ComponentRadbar = function( setClass, cfg ) {
     .on('onLeave',function(){
       // 雷达图退场动画
       var s = 1;
-      for( var i = 0; i <= 100; i++ ) {
+      for( var i = 1; i <= 100; i++ ) {
         setTimeout( function() {
           s -= 0.01;
-          drawData(s);
+          drawData( parseFloat( (s).toFixed(2) ) );
         }, i*5 );
       }
     });

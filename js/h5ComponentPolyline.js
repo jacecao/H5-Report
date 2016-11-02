@@ -154,10 +154,10 @@ var H5ComponentPolyline = function( setClass, cfg ) {
       // 折线图生长动画
       // 这里是一个很巧妙的动画设计
       var s = 0;
-      for( var i = 0; i <= 100; i++ ) {
+      for( var i = 1; i <= 100; i++ ) {
         setTimeout( function() {
           s += 0.01;
-          drawData(s);
+          drawData( parseFloat( (s).toFixed(2) ) );
         }, i*10 + 500);
       }
       
@@ -165,10 +165,10 @@ var H5ComponentPolyline = function( setClass, cfg ) {
     .on('onLeave',function(){
       // 折线图退场动画
       var s = 1;
-      for( var i = 0; i <= 100; i++ ) {
+      for( var i = 1; i <= 100; i++ ) {
         setTimeout( function() {
           s -= 0.01;
-          drawData(s);
+          drawData( parseFloat( (s).toFixed(2) ) );
         }, i*5);
       }
     });

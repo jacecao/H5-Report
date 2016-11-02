@@ -4,14 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 
-	<title>雷达图组件测试</title>
+	<title>饼图组件测试</title>
 
 	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
 	<link rel="stylesheet" href="../css/h5Base.css">
 	<script src="../dist/jquery.min.js"></script>
 	<script src="../dist/jquery.fullpage.min.js"></script>
 	<script src="../js/h5ComponentBase.js"></script>
-	<script src="../js/h5ComponentRadbar.js"></script>
+	<script src="../js/h5ComponentPie.js"></script>
 	<script src="../js/h5.js"></script>
 
 	<style>
@@ -35,36 +35,37 @@
 
 <body>
 
-	<!-- 测试H5雷达图组件 -->
+	<!-- 测试H5饼图图组件 -->
 	<div class="iphone">
 		
 	</div>
 
 	<script>
 
-		var h5_component = new H5ComponentRadbar('radbar',{
-			// 雷达图半径，就会根据这个值生成一个2倍该值的正方形
+		var h5_component = new H5ComponentPie('pie',{
+			// 饼图半径，就会根据这个值生成一个2倍该值的正方形
 			radius: 200,
 			data: [
-					{text: 'firsasd',value: 0.4},
-					{text: '中国人',value: 0.3},
-					{text: 'three',value: 0.9},
-					{text: 'four',value: 0.6},
-					{text: 'five',value: 0.7},
-				],
+			// 这里提供3个属性，所有的value值不能超过1，可以单独设置每块颜色
+			// 也可以省略
+				{text: 'firsasd',value: 0.2, color: '#00ff33'},
+				{text: '中国人出境游',value: 0.1},
+				{text: 'three',value: 0.1},
+				{text: 'four',value: 0.2},
+				{text: 'five',value: 0.2},
+				{text: 'six',value: 0.05},
+				{text: 'seven',value: 0.05},
+				{text: 'eight',value: 0.1},
+			],
 			// 线条和阴影样式设置
 			// canvasStyle: {},
 			canvasStyle: {
-				// 折线颜色
-				lineColor: '#ff9800',
-				// 扇骨颜色
-				borderColor: '#fff',
-				// 背景颜色
-				backgroundColor: ['#7dced6','#30afbb'],
-				// 阴影颜色
-				shadowColor: 'rgba(0,150,136,.7)',
-				// 底部文字颜色
-				textColor: '#000'
+				// 饼框颜色
+				borderColor: '#ff5522',
+				// 遮罩颜色
+				maskColor: '#eee',
+				// 文字颜色
+				// textColor: '#000'
 			},
 			// 整个组件的css设置
 			css: {
