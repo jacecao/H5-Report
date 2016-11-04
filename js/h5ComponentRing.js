@@ -1,3 +1,4 @@
+//环形图组件
 var H5ComponentRing = function( setClass, cfg ) {
 
   //创建一个基本组件
