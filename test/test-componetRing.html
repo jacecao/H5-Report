@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+	<title>环状图组件测试</title>
+
+	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
+	<link rel="stylesheet" href="../css/h5Base.css">
+	<script src="../dist/jquery.min.js"></script>
+	<script src="../dist/jquery.fullpage.min.js"></script>
+	<script src="../js/h5ComponentBase.js"></script>
+	<script src="../js/h5ComponentRing.js"></script>
+	<script src="../js/h5.js"></script>
+
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		body
+		{
+			background: #eee;
+			width: 100%;
+			height: 100vh;
+		}
+		.iphone{
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- 测试H5环状图组件 -->
+	<div class="iphone">
+		
+	</div>
+
+	<script>
+
+		var h5_component = new H5ComponentRing('pie',{
+			// 饼图半径，就会根据这个值生成一个2倍该值的正方形
+			radius: 200,
+			data: 
+			// 这里提供3个属性，所有的value值不能超过1，可以单独设置每块颜色
+			// 也可以省略
+				{
+					text: 'firsasd',
+					value: 0.5, 
+					// color: '#00ff33'
+				},
+			canvasStyle: {
+				// 饼框颜色
+				// borderColor: '#ff5522',
+				// 遮罩颜色
+				maskColor: '#eee',
+				// 文字颜色
+				textColor: '#000',
+				textFont: '24pt',
+				// 环状宽度
+				ringWidth: 40,
+			},
+			// 整个组件的css设置
+			css: {
+				top: 100,
+				opacity: 0
+			},
+			align: 'center',
+			// 载入动画设置
+			animateIn: {
+				top: 200,
+				opacity: 1
+			},
+			// 载出动画设置
+			animateOut: {
+				top: 100,
+				opacity: 0
+			},
+		});
+		
+		$('.iphone').append(h5_component);
+
+		var leave = false;
+		$('body').click(function(){
+			
+			leave = !leave;
+			$('.h5_component').trigger( leave ? 'onLoad':'onLeave');
+			
+		});
+		
+	</script>
+
+</body>
+</html>

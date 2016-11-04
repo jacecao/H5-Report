@@ -81,8 +81,6 @@ var H5ComponentPie = function( setClass, cfg ) {
   // 画数据层
   // 数据层半径
   var R = r-border_width;
-  // per 是0-1之间的小数
-  // 根据per的参数变化来绘制数据，形成动画效果
   var ctxData = creatCanvas({zIndex: 100});
   // 设置起始角度和结束角度
   // 设置起始位置为12点芳方向
