@@ -35,7 +35,7 @@ var H5ComponentBar = function( setClass, cfg ) {
 
       name.text( item.text );
       // 对文字添加用户样式
-      name.css(cfg.textCss && cfg.textCss);
+      name.css(cfg.textCss || {});
       // 数据显示跟进度条颜色一样
       per.text( width ).css('color', cfg.process &&  cfg.process.color[1]);
 

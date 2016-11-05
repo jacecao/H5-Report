@@ -2,6 +2,37 @@
 
 var H5 = function() {
 
+  // 获取h5.js的加载路径
+  var Root = null;
+  var _index = null;
+  $('script').each(function(i) {
+    var _src = $(this).attr('src');
+    if( _src ) {
+      _index = _src.indexOf('h5.js');
+    }
+    if( _src && _index > 0 ) {
+      Root = _src.slice(0, -8);
+      return;
+    }
+  });
+  // 首先加入H5基本样式表
+    var _css = $('<link rel="stylesheet" href="'+Root+'css/h5Base.css">');
+    _css.appendTo('head');
+  // 加入基本组件JS到页面中
+  // 这里就有意思了
+  var baseJS = $('<script src="'+Root+'js/H5ComponentBase.js">');
+  baseJS.appendTo('head');  
+  // 检查组件是否加入
+  this.checkComponent = function(type) {
+    if(!this[type]) {
+      this[type] = type;
+      var addJS = $('<script src="'+Root+'js/H5Component'+type+'.js">');
+      addJS.appendTo('body');
+    }
+  };
+
+
+
   //取得一个随机数来作为id取值，这里保留小数点后3位
   var _id = Math.round( ( Math.random()*1000 ) ) / 1000;
   //替换小数点位下划线
@@ -20,6 +51,8 @@ H5.prototype = {
 
   //添加H5页面
   addPage: function(setClass, text) {
+
+    
 
     var _page = $('<div class="h5_page section"></div>');
 
@@ -44,9 +77,14 @@ H5.prototype = {
     },cfg);
 
     var component;
-    switch( config.type ) {
+    switch( config.type.toLowerCase() ) {
       case 'base':
         component = new H5ComponentBase(setClass, config);
+        break;
+      case 'bar':
+        // 是否加入了bar组件
+        this.checkComponent('Bar');
+        component = new H5ComponentBar(setClass, config);
         break;
     }
 

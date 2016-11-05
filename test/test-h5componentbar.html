@@ -4,15 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 
-	<title>进度条测试</title>
+	<title>柱状图条测试</title>
 
 	<link rel="stylesheet" href="../dist/jquery.fullpage.min.css">
-	<link rel="stylesheet" href="../css/h5Base.css">
+	<link rel="stylesheet" href="../h5Component/css/h5Base.css">
 	<script src="../dist/jquery.min.js"></script>
 	<script src="../dist/jquery.fullpage.min.js"></script>
-	<script src="../js/h5ComponentBase.js"></script>
-	<script src="../js/h5ComponentBar.js"></script>
-	<script src="../js/h5.js"></script>
+	<script src="../h5Component/js/h5ComponentBase.js"></script>
+	<script src="../h5Component/js/h5ComponentBar.js"></script>
+	<script src="../h5Component/js/h5.js"></script>
 
 	<style>
 		html,body{
@@ -56,11 +56,19 @@
 			// css: 柱状图 样式设置
 			process: {
 				color: ['#d1cdcd','#e887bb'],
-			},	
+				css: {
+					width: 30
+				}
+			},
+			// 整个组件的css设置
 			css: {
 				top: 100,
 				opacity: 0
 			},
+			// 对说明文字添加样式
+			// textCss: {
+			// 	color: '#009688'
+			// },
 			align: 'center',
 			animateIn: {
 				top: 200,
@@ -71,7 +79,7 @@
 				opacity: 0
 			},
 			// 柱状图方向设定row column
-			// direction: 'column'
+			direction: 'row'
 		});
 		
 		$('.iphone').append(h5_component);
