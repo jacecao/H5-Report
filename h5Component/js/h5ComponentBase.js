@@ -92,31 +92,39 @@ var H5ComponentBase = function( setClass, cfg ) {
 
 // 自定义事件
   var cls = 'h5_component_base_';
+  // 自定义事件函数
+  if( typeof config.onclick === 'function' ) {
+    component.on('click', config.onclick);
+  }
+
   component.on('onLoad', function(event) {
     
     //relativeTo();
-
     event.stopPropagation();
-    //这里加class是为了更自由的添加组件加载样式
-    $(this).addClass(cls + 'load').removeClass(cls+'leave');
-    config.animateIn && component.animate(config.animateIn, function() {
-     
-     config.endLoad && config.endLoad();
-
-    });
+    // 是否需要延迟加载该组件
+    setTimeout(function() {
+      //这里加class是为了更自由的添加组件加载样式
+      component.addClass(cls + 'load').removeClass(cls+'leave');
+      config.animateIn && component.animate(config.animateIn, function() {
+       // 动画完成后需要执行的事件
+       config.endLoad && config.endLoad();
+      });
+    }, config.delay || 0);
+   
   
   });
 
   component.on('onLeave', function(event) {
 
     event.stopPropagation();
-
-    $(this).addClass(cls + 'leave').removeClass(cls+'load');
-    config.animateOut && component.animate(config.animateOut,function(){
-
-      config.endLeave && config.endLeave();
-
-    });
+    setTimeout(function() {
+      component.addClass(cls + 'leave').removeClass(cls+'load');
+      config.animateOut && component.animate(config.animateOut,function(){
+         // 动画完成后需要执行的事件
+        config.endLeave && config.endLeave();
+      });
+    }, config.delay || 0);
+    
   
   });
 

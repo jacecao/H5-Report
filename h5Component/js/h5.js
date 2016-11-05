@@ -18,27 +18,44 @@ var H5 = function() {
 
 H5.prototype = {
 
-  //添加H5页面
+  // 添加H5页面
   addPage: function(setClass, text) {
 
     
 
     var _page = $('<div class="h5_page section"></div>');
 
-    setClass && _page.addClass(setClass);
+    setClass && _page.addClass('h5_page_'+setClass);
     text && _page.text(text);
-    //注意这里是this.ele里加入page
+    // 注意这里是this.ele里加入page
     this.ele.append(_page);
     
-    //获取所有的h5_page
+    // 获取所有的h5_page
     this.page.push( _page );
+
+    // 当增加一个页面时可执行自定义函数
+    // ????????????????????????????????
+    if( typeof this.whenAddPage === 'function') {
+      this.whenAddPage();
+    }
 
     return this;
 
   },
-  //添加每页的组件
+  // 添加每页的组件
   addComponent: function(setClass, cfg) {
-
+    // 检查传入的参数
+    if( cfg === undefined || arguments.length === 1 ) {
+      switch (typeof arguments[0]) {
+        case 'object':
+          cfg = arguments[0];
+          setClass = null;
+          break;
+        case 'string':
+          cfg = {};
+          break; 
+      }  
+    }
     var config = cfg || {};
     config = $.extend({
       //添加默认配置
@@ -53,6 +70,9 @@ H5.prototype = {
       case 'bar':
         component = new H5ComponentBar(setClass, config);
         break;
+      case 'radbar':
+        component = new H5ComponentRadbar(setClass, config);
+        break;  
     }
 
     //将组件添加到指定创建的页面
@@ -66,7 +86,7 @@ H5.prototype = {
 
   },
   //初始化页面加载
-  loader: function() {
+  loader: function( indexpage ) {
 
     this.ele.fullpage({
       /*接收 index、nextIndex 和 direction 3个参数：
@@ -85,7 +105,10 @@ H5.prototype = {
 
     });
     this.ele.show();
-
+    // 加载指定的页面
+    if( indexpage ) {
+      $.fn.fullpage.moveTo( indexpage );
+    }
   }
 
 };

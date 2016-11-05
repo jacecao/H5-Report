@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+	<title>H5</title>
+
+	<link rel="stylesheet" href="./dist/jquery.fullpage.min.css">
+
+	<script src="./dist/jquery.min.js"></script>
+	<script src="./dist/jquery.fullpage.min.js"></script>
+	<!-- 加载 H5 组件 -->
+	<script type="text/javascript">
+		
+		var res = [
+			'Base','Bar','Point','Polyline','Radbar','Pie','Ring'
+		];
+		var html = [];
+		html.push('<link rel="stylesheet" href="./h5Component/css/h5Base.css"></link>');
+		for( i in res ) {
+			html.push('<script type="text/javascript" src="./h5Component/js/h5Component'+ res[i] +'.js"><\/script>');
+		}
+		document.write( html.join('') );
+	</script>
+	<script type="text/javascript" src="./h5Component/js/h5.js"></script>
+	<!-- 页面css设置 -->
+	<style>
+		body{ padding: 0; margin: 0; }
+		.h5_page{
+			background-image: url('./images/page_bg.png');
+		}
+		.h5_page_face{
+			background-image: url('./images/face_bg.png');
+		}
+		/* 首页副标题抖动效果 */
+		.slogan{
+			-webkit-animation: rock 2s infinite 2s;
+		}
+		@-webkit-keyframes rock{
+			0% { transform: rotate(0deg); }
+			5% { transform: rotate(5deg); }
+			10% { transform: rotate(-7deg); }
+			15% { transform: rotate(5deg); }
+			20% { transform: rotate(-3deg); }
+			25% { transform: rotate(2deg); }
+			30% { transform: rotate(-2deg); }
+			70% { transform: rotate(0deg); }
+			100% { transform: rotate(0deg); }
+		}
+		.caption{
+			background-image: url('./images/page_caption_bg.png');
+			width: 283px;
+			height: 160px;
+			text-align: center;
+			line-height: 140px;
+			font-size: 20px;
+			color: #fff;
+		}
+		.back{
+			top: 30px;
+			-webkit-animation: back 2s infinite;
+		}
+		@-webkit-keyframes back{
+			50%{ top: 20px; }
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		var h5 = new H5();
+
+		h5.whenAddPage = function() {
+			this.addComponent('footer', {
+				backgroundImage: './images/footer.png',
+				css: {
+					left: 0, bottom: '-20px',
+					width: '100%',
+					height: '20px',
+					zIndex: 100,
+					opacity: 0
+				},
+				animateIn: {
+					opacity:1, bottom:'-1px'
+				},
+				animateOut: {
+					opacity:0, bottom:'-20px'
+				},
+				delay: 500
+			});
+		};
+
+		h5.addPage('face')
+			.addComponent('topic',{
+				width: 395,
+				height: 130,
+				backgroundImage: './images/face_logo.png',
+				css: {top:0, opacity: 0},
+				animateIn: { top: 100, opacity:1},
+				animateOut: {top: 0, opacity: 0},
+				align: 'center',
+			})
+			.addComponent('slogan',{
+				width: 365,
+				height: 99,
+				align: 'center',
+				backgroundImage: './images/face_slogan.png',
+				css:{opacity:0,top:180},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 600
+			})
+			.addComponent({
+				width: 370,
+				height: 493,
+				backgroundImage: './images/face_img_left.png',
+				css:{opacity:0,left:-50,bottom:-50},
+				animateIn: {opacity: 1, left:0,bottom:0},
+				animateOut: {opacity: 0,left:-50,bottom:-50},
+				delay: 1000
+			})
+			.addComponent({
+				width: 276,
+				height: 449,
+				backgroundImage: './images/face_img_right.png',
+				css:{opacity:0,right:-50,bottom:-50},
+				animateIn: {opacity: 1, right:0,bottom:0},
+				animateOut: {opacity: 0,right:-50,bottom:-50},
+				delay: 1000
+			})
+		.addPage()
+			.addComponent('caption', {
+				text:'核心理念',
+				css: {top: 20}
+			})
+			.addComponent({
+				width: 500,
+				height: 30,
+				align: 'center',
+				text:'让你只学有用的',
+				css: {
+					top: 30,opacity: 0, textAlign: 'center', color: 'red', fontSize: '26px'
+				},
+				animateIn: {opacity:1,top: 160},
+				animateOut: {opacity:0, top: 240},
+			})
+			.addComponent({
+				width: 500,
+				height: 295,
+				align: 'center',
+				backgroundImage: './images/description_bg.gif',
+				text:'这里杀山大克罗斯了解的啊稍等我去空间溜达收到啦撒是多久啦ask简单了咯打大受打击啊看来是觉得阿萨的啦的啊是巨大打开连接速度啊',
+				css: {
+					top: 240,opacity: 0, 
+					color: '#fff',
+					padding: '15px 10px 10px 10px',
+					fontSize: '15px',
+					lineHeight: '18px',
+					textAlign: 'justify'
+				},
+				animateIn: {opacity:1,top: 240},
+				animateOut: {opacity:0, top: 300},
+				delay: 500
+			})
+			.addComponent({
+				width: 515,
+				height: 310,
+				align: 'center',
+				backgroundImage: './images/p1_people.png',
+				css: {bottom: 0,opacity: 0,},
+				animateIn: {opacity:1,bottom: 40},
+				animateOut: {opacity:0, bottom: 0},
+				delay: 600
+			})	
+		.addPage('tail')
+			.addComponent('logo',{
+				width: 396,
+				height: 130,
+				align: 'center',
+				backgroundImage: './images/tail_logo.png',
+				css: {top: 240,opacity: 0,},
+				animateIn: {opacity:1,bottom: 210},
+				animateOut: {opacity:0, bottom: 240},
+			})
+			.addComponent('slogan',{
+				width: 314,
+				height: 46,
+				align: 'center',
+				backgroundImage: './images/tail_slogan.png',
+				css: {top: 320,opacity: 0},
+				animateIn: {opacity:1},
+				animateOut: {opacity:0},
+				delay: 500
+			})
+			.addComponent('share',{
+				width: 128,
+				height: 120,
+				backgroundImage: './images/tail_share.png',
+				css: {opacity: 0, top: 110, right: 110},
+				animateIn: {opacity: 1,top: 10, right: 10},
+				animateOut: {opacity: 0,top: 110, right: 110},
+				delay: 1000
+			})
+			.addComponent('back',{
+				width: 82,
+				height: 80,
+				backgroundImage: './images/tail_back.png',
+				align: 'center',
+				onclick: function(){$.fn.fullpage.moveTo(1);}
+			})		
+			.loader(3);
+	</script>
+</body>
+</html>

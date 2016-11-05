@@ -41,7 +41,7 @@
 	</div>
 
 	<script>
-		/*
+		
 		var h5 = new H5ComponentBase({
 			width: 514,
 			height: 306,
@@ -52,11 +52,13 @@
 			},
 			animateIn: {bottom: 80,opacity: 1},
 			animateOut: {bottom: 0,opacity: 0},
-			align: 'center'
+			align: 'center',
+			endLoad: function(){alert('load');},
+			endLeave: function(){alert('leave');}
 		});
 		$('.iphone').append(h5);
-		*/
-
+	
+		/*
 		var h5_component = new H5ComponentBase({
 			width: 200,
 			height: 100,
@@ -73,7 +75,7 @@
 			}
 		});
 		$('.iphone').append(h5_component).append(h5_component_1);
-
+		*/
 		var leave = false;
 		$('body').click(function(){
 			
