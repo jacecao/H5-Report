@@ -70,7 +70,7 @@
 <body>
 	<script type="text/javascript">
 		var h5 = new H5();
-
+		// 没添加一个页面就加载一个指定组件
 		h5.whenAddPage = function() {
 			this.addComponent('footer', {
 				backgroundImage: './images/footer.png',
@@ -172,7 +172,311 @@
 				animateIn: {opacity:1,bottom: 40},
 				animateOut: {opacity:0, bottom: 0},
 				delay: 600
+			})
+		.addPage()
+			.addComponent('caption',{
+				text: '课程分布方向',
+				css: {top: 20}
+			})
+			.addComponent('Polyline',{
+				type: 'Polyline',
+				width: 480,
+				height: 350,
+				align: 'center',
+				data: [
+					{text: '前端开发', value: 0.4},
+					{text: '移动开发', value: 0.2},
+					{text: '后端开发', value: 0.3},
+					{text: '图像处理', value: 0.1},
+				],
+				css: {top: 100, opacity: 0},
+				canvasStyle: {
+					borderColor: '#59768d',
+				},
+				animateIn: { opacity: 1, top: 250},
+				animateOut: { opacity: 0, top: 100}
+			})
+			.addComponent('msg',{
+				text: '前端开发课程占到40%',
+				css: {
+					bottom: 120,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '20px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
+			})
+		.addPage()
+			.addComponent('caption',{
+				text: '移动开发课程资源',
+				css: {top: 20}
+			})
+			.addComponent('pie',{
+				radius: 150,
+				type: 'pie',
+				data: [
+					{text: 'Android',value: 0.4},
+					{text: 'IOS',value: 0.3},
+					{text: 'Cocos2D-X',value: 0.2},
+					{text: 'Unity-3D',value: 0.1},
+				],
+				canvasStyle: {
+					borderColor: '#ff5522',
+					maskColor: '#eee',
+				},
+				css: {
+					top: 100,
+					opacity: 0
+				},
+				align: 'center',
+				animateIn: {
+					top: 260,
+					opacity: 1
+				},
+				animateOut: {
+					top: 100,
+					opacity: 0
+				},
+			})
+			.addComponent('msg',{
+				text: '移动课程Android占到40%',
+				css: {
+					bottom: 120,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '20px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
+			})
+		.addPage()
+			.addComponent('caption',{
+				text: '前端开发课程',
+				css: {top: 20}
+			})
+			.addComponent('bar',{
+				type: 'bar',
+				width: 530,
+				height: 400,
+				data: [
+						{text: 'Javascript',value: 0.4},
+						{text: 'HTML/CSS',value: 0.2},
+						{text: 'CSS3',value: 0.1},
+						{text: 'HTML5',value: 0.2},
+						{text: 'jQuery',value: 0.35},
+						{text: 'Bootstrap',value: 0.05},
+						{text: 'AngularJS',value: 0.09},
+					],
+				process: {
+					color: ['#d1cdcd','#e887bb'],
+				},
+				textCss: { color: '#ed143d'},
+				css: {top: 100,opacity: 0},
+				align: 'center',
+				animateIn: {top: 230,opacity: 1},
+				animateOut: {top: 100,opacity: 0},
+			})
+			.addComponent('msg',{
+				text: 'Javascrip课程占到40%',
+				css: {
+					bottom: 120,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '20px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
+			})
+		.addPage()
+			.addComponent('caption',{
+				text: '前端开发课程',
+				css: {top: 20}
+			})
+			.addComponent('bar',{
+				type: 'bar',
+				width: 530,
+				height: 300,
+				data: [
+						{text: 'Javascript',value: 0.4},
+						{text: 'CSS3',value: 0.3},
+						{text: 'HTML5',value: 0.2},
+						{text: 'jQuery',value: 0.35},
+						{text: 'React',value: 0.1},
+					],
+				process: {
+					color: ['#d1cdcd','#e887bb'],
+				},
+				textCss: { color: '#ed143d'},
+				css: {top: 100,opacity: 0},
+				align: 'center',
+				animateIn: {top: 230,opacity: 1},
+				animateOut: {top: 100,opacity: 0},
+				direction: 'column'
+			})
+			.addComponent('msg',{
+				text: 'Javascrip课程占到40%',
+				css: {
+					bottom: 120,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '20px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
 			})	
+		.addPage()
+			.addComponent('caption',{
+				text: '后端开发课程',
+				css: {top: 20}
+			})
+			.addComponent('radbar',{
+				type: 'radbar',
+				radius: 200,
+				data: [
+						{text: 'php',value: 0.4},
+						{text: 'python',value: 0.3},
+						{text: 'node',value: 0.2},
+						{text: 'mongoDB',value: 0.2},
+						{text: 'mysql',value: 0.35},
+					],
+				css: {top: 100,opacity: 0},
+				canvasStyle: {
+					lineColor: '#ff9800',
+					shadowColor: 'rgba(0,150,136,.8)',
+					textColor: '#ed143d'
+				},
+				align: 'center',
+				animateIn: {top: 230,opacity: 1},
+				animateOut: {top: 100,opacity: 0},
+			})
+			.addComponent('msg',{
+				text: 'PHP课程占到40%',
+				css: {
+					bottom: 120,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '20px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
+			})	
+		.addPage()
+			.addComponent('caption',{
+				text: '课程报名人数过万',
+				css: {top: 20}
+			})
+			.addComponent('ring_call',{
+				type: 'ring',
+				align: 'center',
+				radius: 150,
+				data: {text: '总课程', value: 0.7},
+				canvasStyle: { textColor: '#fff'},
+				css: { top: 160, opacity: 0},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+			})
+			.addComponent('msg',{
+				text: '不同课程报名人数超过一万占比',
+				css: {
+					top: 340,
+					opacity: 0,
+					textAlign: 'center',
+					width: '100%',
+					color: '#ed143d',
+					fontSize: '16px'
+				},
+				animateIn: {opacity: 1},
+				animateOut: {opacity: 0},
+				delay: 1000,
+			})
+			.addComponent('ring_1',{
+				type: 'ring',
+				radius: 80,
+				data: {text: '前端开发', value: 0.4},
+				css: {left: 50, bottom: 60, opacity: 0},
+				canvasStyle: { textFont: '16pt', textColor: '#fff',},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+				delay: 500
+			})
+			.addComponent('ring_2',{
+				type: 'ring',
+				radius: 80,
+				data: {text: '后端开发', value: 0.3},
+				css: {left: 150, bottom: 60, opacity: 0},
+				canvasStyle: { textFont: '16pt', textColor: '#fff',},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+				delay: 500
+			})
+			.addComponent('ring_3',{
+				type: 'ring',
+				radius: 80,
+				data: {text: '移动开发', value: 0.3},
+				css: {left: 250, bottom: 60, opacity: 0},
+				canvasStyle: { textFont: '16pt', textColor: '#fff',},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+				delay: 500
+			})
+			.addComponent('ring_4',{
+				type: 'ring',
+				radius: 80,
+				data: {text: 'IOS开发', value: 0.4},
+				css: {left: 90, bottom: 160, opacity: 0},
+				canvasStyle: { textFont: '16pt', textColor: '#fff',},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+				delay: 500
+			})
+			.addComponent('ring_5',{
+				type: 'ring',
+				radius: 80,
+				data: {text: 'Android开发', value: 0.6},
+				css: {left: 190, bottom: 160, opacity: 0},
+				canvasStyle: { textFont: '16pt', textColor: '#fff',},
+				animateIn: { opacity: 1},
+				animateOut: { opacity: 0},
+				delay: 500
+			})
+		.addPage()
+			.addComponent('caption',{
+				text: '课程难度分布',
+				css: {top: 20}
+			})
+			.addComponent('point',{
+				type: 'point',
+				width: 300,
+				height: 300,
+				data: [
+						{text: '初级',value: 0.5,color: 'red',position: {left: 0,top: -50}},
+						{text: '中级',value: 0.2,color: 'pink',position: {top: 204,left: 9}},
+						{text: '高级',value: 0.1,color: 'orange',position: {top: 150,left: 123}}
+					],	
+				css: {
+						left: 100,
+						fontSize: '20px',
+						opacity: 0
+					},
+				animateIn: { top: 230, opacity:1},
+				animateOut: {top: 100, opacity: 0},
+			})					
 		.addPage('tail')
 			.addComponent('logo',{
 				width: 396,
@@ -209,7 +513,7 @@
 				align: 'center',
 				onclick: function(){$.fn.fullpage.moveTo(1);}
 			})		
-			.loader(3);
-	</script>
+		.loader(9);
+	</script> 
 </body>
 </html>

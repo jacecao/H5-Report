@@ -5,15 +5,15 @@ var H5ComponentPolyline = function( setClass, cfg ) {
   var component = new H5ComponentBase( 'h5_component_polyline ' + setClass, cfg );
 
   // 设置canvas属性
-  var w = cfg.width;
-  var h = cfg.height;
+  // 定义网格线宽度
+  var LineWidth = 2;
+  var w = cfg.width + 2*LineWidth;
+  var h = cfg.height + 2*LineWidth; 
   // 创建canvasDOM
   var creatCanvas = function() {
     var canvas = document.createElement('canvas');
-    // 这里加2个像素是因为首尾线条会超出边界
-    // 所以这里需要加入网格像素的2倍
-    canvas.width = w + 2;
-    canvas.height = h + 2;
+    canvas.width = w;
+    canvas.height = h;
     // 设置canvasc样式
     $(canvas).css({
       position: 'absolute',
@@ -33,15 +33,14 @@ var H5ComponentPolyline = function( setClass, cfg ) {
   // 绘制网格线
   var drawLine = function() {
     var ctx = creatCanvas();
-    ctx.clearRect(0, 0, w + 2, h + 2);
+    ctx.clearRect(0, 0, w, h);
     var step = 10;
     ctx.beginPath();
-    // 这里需要在画布宽高加入2倍lineWidth像素
-    ctx.lineWidth = 1;
+    ctx.lineWidth = LineWidth;
     ctx.strokeStyle = cfg.canvasStyle && cfg.canvasStyle.borderColor ? cfg.canvasStyle.borderColor : '#aaa';
     // 画水平线
     for( var i = 0; i < step + 1; i++) {
-      var y = (h/step) * i;
+      var y = (h - LineWidth)/step * i;
       ctx.moveTo(0, y);
       ctx.lineTo(w, y);
     }
@@ -53,7 +52,7 @@ var H5ComponentPolyline = function( setClass, cfg ) {
     // 所以这里要将该宽度缩小1倍
     var text_w = Math.floor(w / step) / 2;
     for( var j = 0; j < step + 1; j++) {
-      var x = (w/step) * j;
+      var x = (w - LineWidth)/step * j;
       ctx.moveTo(x, 0);
       ctx.lineTo(x, h);
       // 创建文本DOM到组件
@@ -63,10 +62,9 @@ var H5ComponentPolyline = function( setClass, cfg ) {
         textDom.css({
           position: 'absolute',
           display: 'block',
-          padding: '0 5px',
           fontSize: '12px',
           wordWrap: 'break-word',
-          width: text_w - 10,
+          width: text_w,
           textAlign: 'center',
           height: '20px',
           lineHeight: '20px',

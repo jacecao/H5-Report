@@ -63,20 +63,18 @@ var H5ComponentRing = function( setClass, cfg ) {
   var border_width = 4;
   // 背景色设置
   var color_background = cfg.canvasStyle && cfg.canvasStyle.backgroundColor ? 
-                  cfg.canvasStyle.backgroundColor : '#fff';
+                  cfg.canvasStyle.backgroundColor : 'rgba(170,170,170,0.5)';
   // 遮罩颜色              
   var color_mask = cfg.canvasStyle && cfg.canvasStyle.maskColor ? 
                   cfg.canvasStyle.maskColor : creatColor();                                                                  
   // 绘制饼图
-  var drawPie = function(radius, css) {
-    var ctx = css ? creatCanvas(css) : creatCanvas();
+  var drawPie = function( cfg ) {
+    var ctx = cfg.css ? creatCanvas(cfg.css) : creatCanvas();
     ctx.beginPath();
-    ctx.fillStyle = color_background;
-    ctx.strokeStyle = color_border;
+    ctx.fillStyle = cfg.backgroundColor || color_background;
     ctx.lineWidth = border_width;
-    ctx.arc(r, r, radius, 0, 2*Math.PI);
+    ctx.arc(r, r, cfg.radius, 0, 2*Math.PI);
     ctx.fill();
-    ctx.stroke();
     return ctx;
   };
 
@@ -90,7 +88,7 @@ var H5ComponentRing = function( setClass, cfg ) {
   var circleAngel = Math.PI * 2;
   // 环状颜色
   var COLOR = cfg.data.color ? cfg.data.color : creatColor();
-  var ctxData = creatCanvas({zIndex: 100});
+  var ctxData = creatCanvas({css: {zIndex: 100}});
   var drawRing = function( per ) {
     // 创建一个beferred对象
     var def = $.Deferred();
@@ -102,7 +100,7 @@ var H5ComponentRing = function( setClass, cfg ) {
     ctxData.fillStyle = COLOR;
     // 根据数据绘制圆弧
     ctxData.moveTo(r, r);
-    ctxData.arc(r, r, R - border_width, startAngel, endAngel);
+    ctxData.arc(r, r, R, startAngel, endAngel);
     ctxData.fill();
     ctxData.closePath();
     // 判断是否完成动画
@@ -124,8 +122,8 @@ var H5ComponentRing = function( setClass, cfg ) {
   var FillStyle = cfg.canvasStyle && cfg.canvasStyle.textColor ? 
                   cfg.canvasStyle.textColor : COLOR;        
   var drawTopRing = function() {
-    // 设置环状宽度 
-    var ctx = drawPie(r-ringWidth, {zIndex: 200});
+    // 创建遮罩圆
+    var ctx = drawPie({radius: r-ringWidth, css: {zIndex: 200}, backgroundColor: color_mask});
     ctx.beginPath();
     // 绘制文字得大小和字体
     ctx.font = cfg.canvasStyle && cfg.canvasStyle.textFont ? 
@@ -143,7 +141,7 @@ var H5ComponentRing = function( setClass, cfg ) {
   // 绘制数据文字显示
   var canvas_data = creatCanvas({zIndex: 300});
   canvas_data.font = r/5 + 'pt Arial';
-  canvas_data.fillStyle = COLOR;
+  canvas_data.fillStyle = FillStyle;
   var drawDataText = function( per ) {
       canvas_data.clearRect(0, 0, w, h);
       canvas_data.beginPath();
@@ -157,7 +155,7 @@ var H5ComponentRing = function( setClass, cfg ) {
   
   //必须要有data配置项，且该项目里一定要有value属性
   if( cfg.data && cfg.data.value ) {
-    drawPie( r-border_width );
+    drawPie( {radius: r-border_width} );
     /* 
     ** 再次得到绘制信息文本得cavas,
     ** 这里的ctx是一个含有文字文本坐标信息的对象 

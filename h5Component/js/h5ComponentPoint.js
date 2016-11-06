@@ -4,6 +4,29 @@ var H5ComponentPoint = function( setClass, cfg ) {
   //创建一个基本组件
   var component = new H5ComponentBase( 'h5_component_points  ' + setClass, cfg );
 
+  // 创建一个随机颜色生成器
+  var creatColor = function() {
+    var color = {
+      // 随机生成0-255之间的数
+      r: Math.round(Math.random() * 256),
+      g: Math.round(Math.random() * 256),
+      b: Math.round(Math.random() * 256),
+    };
+    // 转换16进制颜色格式
+    var toHex = function(val) {
+      var hex;
+      if( val ) {
+        hex = parseInt(val).toString(16);
+        // 不够2位加0补上
+        if( hex.length == 1 ) {
+          hex = '0' + hex;
+        }
+      }
+      return hex;
+    };
+
+    return '#' + toHex(color.r) + toHex(color.g) + toHex(color.b);
+  };
 
   //创建散点元素
   //必须要有data配置项，且该项目里一定要有value属性
@@ -28,16 +51,15 @@ var H5ComponentPoint = function( setClass, cfg ) {
     };
 
     //设置文字默认样式
-    var _fontSize = cfg.css.fontSize || '18px';
-    var textCss = {
+    var textCss = $.extend({
       width: '100%',
       height: 30,
-      fontSize: _fontSize,
+      fontSize: '18px',
       textAlign: 'center',
       position: 'absolute',
       top: '50%',
       marginTop: -15
-    };
+    }, cfg.textCss);
 
     $.each( cfg.data, function(index, item ){
       
@@ -50,14 +72,14 @@ var H5ComponentPoint = function( setClass, cfg ) {
       var value_pre = $('<div class="point_pre">'+ (item.value*100) +'%</div>');
       value_pre.css('fontSize', '0.5em');
 
-      desc.css(textCss).append(value_pre);
+      desc.css(textCss).css('color',item.textColor || '#000').append(value_pre);
       point.append(desc);
 
       //根据参考值计算出相应的宽高比
       var pre = (item.value/base)*100 + '%';
       point.width( pre ).height( pre );
       //设置背景色
-      item.color && point.css('backgroundColor', item.color);
+      point.css('backgroundColor', item.backgroundColor || creatColor());
       
       //设置相对component定位
       if( index == maxObj.index ){

@@ -72,7 +72,19 @@ H5.prototype = {
         break;
       case 'radbar':
         component = new H5ComponentRadbar(setClass, config);
-        break;  
+        break;
+      case 'pie':
+        component = new H5ComponentPie(setClass, config);
+        break;
+      case 'point':
+        component = new H5ComponentPoint(setClass, config);
+        break;
+      case 'polyline':
+        component = new H5ComponentPolyline(setClass, config);
+        break;
+      case 'ring':
+      component = new H5ComponentRing(setClass, config);
+      break;
     }
 
     //将组件添加到指定创建的页面

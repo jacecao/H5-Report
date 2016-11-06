@@ -54,17 +54,32 @@ var H5ComponentBar = function( setClass, cfg ) {
           });
           break;
         case 'column':
+          component.css({
+            display: 'flex',
+            alignItems: 'flex-end'
+          });
           line = $('<div class="h5_component_bar_column bar_line">');
+          
+          // 设置柱状图样式
+          // 这里用于实现柱状条底部对齐
+          // 采用flex布局对文字采用绝对定位来实现对齐
+          line.css({
+            position: 'relative',
+          });
+          name.css({
+            position: 'absolute',
+            top: Math.floor(cfg.height*0.6) * item.value + 25 + 'px'
+          });
           line.width(aveWidth);
 
-          rate.height( Math.floor(cfg.height*0.6) || 200 );
+          rate.height( Math.floor(cfg.height*0.6) * item.value );
           //设置line的用户样式;
           cfg.process && cfg.process.css && rate.css( cfg.process.css );
 
           line.append( per ).append( rate ).append( name );
           //设置柱状图进度高度
           line.on('lineLoad', function() {
-            _process.css('height', width);
+            _process.css('height', '100%');
           });
           line.on('lineLeave', function() {
             _process.css('height', 0);

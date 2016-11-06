@@ -48,17 +48,26 @@
 		var h5_component = new H5ComponentPoint('point',{
 			width: 200,
 			height: 200,
+			// text value 为必须
+			// textColor 文字颜色 默认黑色
+			// backgroundColor 圆背景色 默认为自动填充
+			// position 动画定位，起始点都为组件中点
 			data: [
-					{text: 'first',value: 0.4,color: 'red',position: {left: -50,top: -50}},
-					{text: 'second',value: 0.3,color: 'pink',position: {top: 150,left: 50}},
-					{text: 'three',value: 0.1,color: 'orange',position: {top: 50,left: 50}}
+					{text: 'first',value: 0.4,backgroundColor: 'red',position: {left: -50,top: -50}, textColor: 'blue'},
+					{text: 'second',value: 0.3,backgroundColor: 'pink',position: {top: 150,left: 50}},
+					{text: 'three',value: 0.1,backgroundColor: 'orange',position: {top: 50,left: 50}}
 				],
+			// 组件样式设置
 			css: {
 					left: 100,
 					top: 100,
 					fontSize: '20px',
 					opacity: 0
 				},
+			// 统一设置文字颜色
+			textCss: {
+				color: '#fff'
+			},
 			animateIn: { top: 150, opacity:1},
 			animateOut: {
 					top: 100, opacity: 0

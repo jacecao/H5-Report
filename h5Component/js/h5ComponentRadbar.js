@@ -49,7 +49,7 @@ var H5ComponentRadbar = function( setClass, cfg ) {
                   cfg.canvasStyle.lineColor : '#ff5722';
   // 数据阴影颜色
   var color_e = cfg.canvasStyle && cfg.canvasStyle.shadowColor ? 
-                  cfg.canvasStyle.shadowColor : '#ff5722';
+                  cfg.canvasStyle.shadowColor : 'rgba(255,87,34,0.68)';
                                                           
   // 绘制雷达图网格
   var drawLine = function() {
