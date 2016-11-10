@@ -1,0 +1,91 @@
+/* 这里就遇到一个问题 那就是如何避免样式的全局污染 */
+.h5_loading{
+	width: 100%;
+	position: relative;
+	margin: -30px auto;
+	top: 45%;
+	display: none;
+}
+.h5_loading .circle-1 , .h5_loading .circle-2 {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: #0062e0;
+	left: 50%;
+	top: 0;
+	margin-left: -30px;
+	opacity: 0.6;
+}
+.h5_loading .circle-1{
+	-webkit-animation: bounce1 2s infinite ease-in-out;
+}
+.h5_loading .circle-2{
+	-webkit-animation: bounce2 2s infinite ease-in-out;
+}
+@-webkit-keyframes bounce1 {
+	0%, 100%{
+		transform: scale(0.2);
+	}
+	50%{
+		transform: scale(1);
+	}
+}
+@-webkit-keyframes bounce2 {
+	0%, 100%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(0.2);
+	}
+}
+
+.h5_loading #loading_rate{
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	font-size: 10px;
+	line-height: 20px;
+	text-align: center;
+	color: #0062e0;
+	top: 70px;
+}
+.h5_loading .h5_loading_process, .h5_loading .process_bar, .h5_loading .process_bar::before
+{
+	border-radius: 2vw;
+	border-radius: 2vw;
+}
+.h5_loading .h5_loading_process {
+  width: 70vw;
+  position: relative;
+  background-color: #42ab20;
+  margin:0 auto;
+  top: 100px;
+  box-shadow: 0vw 1vh 3vh rgba(109, 168, 7, 0.8);
+}
+.h5_loading .process_bar {
+  height: 4vh;
+  width: 0;
+  border: 1px solid #6DA807;
+  background-color: #73ab13;
+  background-size: 2.89em 2.89em;
+  background-image: linear-gradient(-45deg, #41ce0e 0em, #41ce0e 0.8em, #96D923 0.9em, #96D923 2.1em, #41ce0e 2.1em, #5dc836 2.9em, #96D923 2.9em, #96D923 4.1em);
+  -webkit-animation: warning-animation 750ms infinite linear;
+}
+@-webkit-keyframes warning-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 2.89em 0;
+  }
+}
+.h5_loading .process_bar::before {
+  content: '';
+  width: 70vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #6DA807, rgba(171, 226, 77, 0.4) 15%, transparent 55%, #6DA807);
+}

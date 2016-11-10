@@ -5,28 +5,23 @@
 	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 
 	<title>H5</title>
-
+	<link rel="stylesheet" href="./h5Component/css/loading.css">
 	<link rel="stylesheet" href="./dist/jquery.fullpage.min.css">
 
 	<script src="./dist/jquery.min.js"></script>
 	<script src="./dist/jquery.fullpage.min.js"></script>
-	<!-- 加载 H5 组件 -->
-	<script type="text/javascript">
-		
-		var res = [
-			'Base','Bar','Point','Polyline','Radbar','Pie','Ring'
-		];
-		var html = [];
-		html.push('<link rel="stylesheet" href="./h5Component/css/h5Base.css"></link>');
-		for( i in res ) {
-			html.push('<script type="text/javascript" src="./h5Component/js/h5Component'+ res[i] +'.js"><\/script>');
-		}
-		document.write( html.join('') );
-	</script>
-	<script type="text/javascript" src="./h5Component/js/h5.js"></script>
+	<script type="text/javascript" src="./h5Component/js/h5_loading.js"></script>
+	
 	<!-- 页面css设置 -->
 	<style>
-		body{ padding: 0; margin: 0; }
+		body{ 
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			padding: 0; 
+			margin: 0; 
+		}
+
 		.h5_page{
 			background-image: url('./images/page_bg.png');
 		}
@@ -68,6 +63,32 @@
 </head>
 
 <body>
+	
+	<div class="h5_loading">
+		<div class="circle-1"></div>
+		<div class="circle-2"></div>
+		<div id="loading_rate">0%</div>
+		<div class="h5_loading_process">
+			<div class="process_bar"></div>
+		</div>
+	</div>
+	
+
+	<!-- 加载 H5 组件 -->
+	<script type="text/javascript">
+		
+		var res = [
+			'Base','Bar','Point','Polyline','Radbar','Pie','Ring'
+		];
+		var html = [];
+		html.push('<link rel="stylesheet" href="./h5Component/css/h5Base.css"></link>');
+		for( i in res ) {
+			html.push('<script type="text/javascript" src="./h5Component/js/h5Component'+ res[i] +'.js"><\/script>');
+		}
+		document.write( html.join('') );
+	</script>
+	<script type="text/javascript" src="./h5Component/js/h5.js"></script>
+
 	<script type="text/javascript">
 		var h5 = new H5();
 		// 没添加一个页面就加载一个指定组件
@@ -513,7 +534,8 @@
 				align: 'center',
 				onclick: function(){$.fn.fullpage.moveTo(1);}
 			})		
-		.loader(9);
-	</script> 
+		.loader(['./images/tail_back.png', './images/tail_share.png', './images/tail_slogan.png','./images/tail_slogan.png']);
+	</script>
+
 </body>
 </html>
