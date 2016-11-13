@@ -1,9 +1,11 @@
 // loading组件
 
 var H5_loading = function( images , indexpage ) {
+
   $('.h5_loading').show();
   var id = this.id;
 
+  // loading
   if( this._images === undefined ) { // 第一次加载
 
     this._images = (images || []).length;
