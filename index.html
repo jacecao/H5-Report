@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+	<title>H5</title>
+	<link rel="stylesheet" href="./h5Component/css/loading.css">
+	<link rel="stylesheet" href="./dist/jquery.fullpage.min.css">
+
+	<script src="./dist/jquery.min.js"></script>
+	<script src="./dist/jquery.fullpage.min.js"></script>
+	<script type="text/javascript" src="./h5Component/js/h5_loading.js"></script>
+	
+	<!-- 页面css设置 -->
+	<style>
+		body{ 
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			padding: 0; 
+			margin: 0; 
+		}
+
+		.h5_page{
+			background-image: url('./images/page_bg.png');
+		}
+		.h5_page_face{
+			background-image: url('./images/face_bg.png');
+		}
+		/* 首页副标题抖动效果 */
+		.slogan{
+			-webkit-animation: rock 2s infinite 2s;
+		}
+		@-webkit-keyframes rock{
+			0% { transform: rotate(0deg); }
+			5% { transform: rotate(5deg); }
+			10% { transform: rotate(-7deg); }
+			15% { transform: rotate(5deg); }
+			20% { transform: rotate(-3deg); }
+			25% { transform: rotate(2deg); }
+			30% { transform: rotate(-2deg); }
+			70% { transform: rotate(0deg); }
+			100% { transform: rotate(0deg); }
+		}
+		.caption{
+			background-image: url('./images/page_caption_bg.png');
+			width: 283px;
+			height: 160px;
+			text-align: center;
+			line-height: 140px;
+			font-size: 20px;
+			color: #fff;
+		}
+		.back{
+			top: 30px;
+			-webkit-animation: back 2s infinite;
+		}
+		@-webkit-keyframes back{
+			50%{ top: 20px; }
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div class="h5_loading">
+		<div class="circle-1"></div>
+		<div class="circle-2"></div>
+		<div id="loading_rate">0%</div>
+		<div class="h5_loading_process">
+			<div class="process_bar"></div>
+		</div>
+	</div>
+	
+
+	<!-- 加载 H5 组件 -->
+	<script type="text/javascript">
+		
+		var res = [
+			'Base','Bar','Point','Polyline','Radbar','Pie','Ring'
+		];
+		var html = [];
+		html.push('<link rel="stylesheet" href="./h5Component/css/h5Base.css"></link>');
+		for( i in res ) {
+			html.push('<script type="text/javascript" src="./h5Component/js/h5Component'+ res[i] +'.js"><\/script>');
+		}
+		document.write( html.join('') );
+	</script>
+	
+	<script type="text/javascript" src="./h5Component/js/h5.js"></script>
+
+	<script type="text/javascript">
+		var h5 = new H5();
+		// 没添加一个页面就加载一个指定组件
+		h5.whenAddPage = function() {
+			this.addComponent('footer', {
+				backgroundImage: './images/footer.png',
+				css: {
+					left: 0, bottom: '-20px',
+					width: '100%',
+					height: '20px',
+					zIndex: 100,
+					opacity: 0
+				},
+				animateIn: {
+					opacity:1, bottom:'-1px'
+				},
+				animateOut: {
+					opacity:0, bottom:'-20px'
+				},
+				delay: 500
+			});
+		};
+		
+		$.getJSON('./data/h5_config.json', function(json) {
+
+			$.each(json, function(i, item) {
+				if( item.isPage ) {
+					h5.addPage(item.class, item.text);
+				}else {
+					h5.addComponent(item.class, item.config);
+				}
+			});
+			h5.loader([
+				'./images/tail_back.png', 
+				'./images/tail_share.png', 
+				'./images/tail_slogan.png',
+				'./images/tail_slogan.png',
+				'./images/page_bg.png',
+				'./images/face_bg.png',
+				'./images/page_caption_bg.png',
+				'./images/footer.png',
+				'./images/face_logo.png',
+				'./images/face_slogan.png',
+				'./images/face_img_left.png',
+				'./images/face_img_right.png',
+				'./images/description_bg.gif',
+				'./images/p1_people.png',
+			]);
+		});
+		
+	</script>
+
+</body>
+</html>

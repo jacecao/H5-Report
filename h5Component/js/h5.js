@@ -1,4 +1,6 @@
 // h5载体组件
+var jsonData = [];
+
 var H5 = function() {
 
   // 取得一个随机数来作为id取值，这里保留小数点后3位
@@ -21,6 +23,7 @@ H5.prototype = {
 
   // 添加H5页面
   addPage: function(setClass, text) {
+    jsonData.push({isPage: true, class: setClass, text: text});
 
     var _page = $('<div class="h5_page section"></div>');
 
@@ -42,6 +45,7 @@ H5.prototype = {
   },
   // 添加每页的组件
   addComponent: function(setClass, cfg) {
+    jsonData.push({isPage: false, class: setClass, config: cfg});
     // 检查传入的参数
     if( cfg === undefined || arguments.length === 1 ) {
       switch (typeof arguments[0]) {
