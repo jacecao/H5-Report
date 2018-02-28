@@ -385,7 +385,7 @@
 	"config": {
 		"text": "你是数码达人",
 		"css": {
-			"bottom": 120,
+			"bottom": 90,
 			"opacity": 0,
 			"textAlign": "center",
 			"width": "100%",
@@ -478,7 +478,7 @@
 	"isPage": false,
 	"class": "msg",
 	"config": {
-		"text": "看了双十一你狠话了一笔",
+		"text": "看来双十一你狠花了一笔啊",
 		"css": {
 			"bottom": 120,
 			"opacity": 0,
@@ -537,7 +537,7 @@
 		"radius": 200,
 		"data": [{
 			"text": "笔记本",
-			"value": 0.4
+			"value": 0.7
 		}, {
 			"text": "耳机",
 			"value": 0.3
@@ -546,7 +546,10 @@
 			"value": 0.2
 		}, {
 			"text": "净化器",
-			"value": 0.2
+			"value": 0.3
+		}, {
+			"text": "手机",
+			"value": 0.4
 		}],
 		"css": {
 			"top": 100,
@@ -573,7 +576,7 @@
 	"config": {
 		"text": "笔记本是你今年最大花费",
 		"css": {
-			"bottom": 120,
+			"bottom": 100,
 			"opacity": 0,
 			"textAlign": "center",
 			"width": "100%",
@@ -630,14 +633,14 @@
 		"align": "center",
 		"radius": 150,
 		"data": {
-			"text": "总课程",
+			"text": "花费占比",
 			"value": 0.7
 		},
 		"canvasStyle": {
 			"textColor": "#fff"
 		},
 		"css": {
-			"top": 160,
+			"top": 190,
 			"opacity": 0
 		},
 		"animateIn": {
@@ -653,12 +656,12 @@
 	"config": {
 		"text": "还不错有剩余哦",
 		"css": {
-			"top": 340,
+			"top": 400,
 			"opacity": 0,
 			"textAlign": "center",
 			"width": "100%",
 			"color": "#ed143d",
-			"fontSize": "16px"
+			"fontSize": "18px"
 		},
 		"animateIn": {
 			"opacity": 1
